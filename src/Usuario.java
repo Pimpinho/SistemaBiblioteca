@@ -33,16 +33,4 @@ public class Usuario {
             System.out.println("O livro " + livro.getTitulo() + " não está disponível!" );
         }
     }
-    public void devolverLivro(Livro livro) {
-        if (livroAlugado != null) {
-            livroAlugado.setDisponivel(true);
-            System.out.println(nome + " devolveu o livro " + livro.getTitulo());
-            livroAlugado = null;
-
-        } else {
-            System.out.println(nome + " não há nenhum livro para devolver!");
-        }
-
-    }
-
 }

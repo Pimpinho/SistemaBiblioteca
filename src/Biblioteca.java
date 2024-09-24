@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Biblioteca {
@@ -14,7 +15,7 @@ public class Biblioteca {
         alugarLivro = new ArrayList<Livro>();
     }
 
-    public static ArrayList<Livro> getAlugarLivro() {
+    public static ArrayList<Livro> getAlugarLivro() { //Esse objeto chama a opção 6 - Mostrar livros alugados
         return alugarLivro;
     }
 
@@ -22,7 +23,7 @@ public class Biblioteca {
         Biblioteca.alugarLivro = alugarLivro;
     }
 
-    public static ArrayList<Livro> getLivros() {
+    public static ArrayList<Livro> getLivros() { //Esse objeto chama a opção 1 - Mostrar todos os livros
         return livros;
     }
 
@@ -38,7 +39,7 @@ public class Biblioteca {
         this.usuarios = usuarios;
     }
 
-    public void adicionarLivro(Livro livro) {
+    public void adicionarLivro(Livro livro) { //Esse objeto adiciona os livros nos programa, opção 4
         livros.add(livro);
         System.out.println(livro.getTitulo() + " Livro adicionado com sucesso!");
     }
@@ -49,38 +50,38 @@ public class Biblioteca {
     }
 
 
-    public void adicionarUsuario(Usuario usuario) {
+    public void adicionarUsuario(Usuario usuario) { //Adiciona o usuário no começo do programa
         usuarios.add(usuario);
         System.out.println("Usuario adicionado com sucesso!");
     }
 
-    public void removerUsuario(Usuario usuario) {
-        usuarios.remove(usuario);
-        System.out.println("Usuario removido com sucesso!");
-    }
+    public void adicionarCarrinho(Livro carrinho) { //Adiciona os livros no carrinho. Faz parte da opção 2
 
-    public void adicionarCarrinho(Livro carrinho) {
-        alugarLivro.add(carrinho);
+        alugarLivro.add(carrinho); //Acrescenta o livro no carrinho
         System.out.println("O livro será alugado por quantos dias?");
-        int diaria = captura.nextInt();
+        try {
+            int diaria = captura.nextInt();
         int itemCount = alugarLivro.size();
-        double valor = 3.00;
+        final double valor = 3.00;
         double valorFinal = diaria * valor * itemCount;
         System.out.println("Carrinho adicionado com sucesso! O valor total do seu carrinho atual é de R$"+ valorFinal);
+        } catch (InputMismatchException e) {
+            System.out.println("Valor inválido, encerrando o programa");
+        }
     }
 
-    public static void removerCarrinho() {
+    public static void removerCarrinho() { //Zera o carrinho
         alugarLivro.clear();
         System.out.println("Carrinho removido com sucesso!");
     }
 
-    public static void devolverLivros() {
+    public static void devolverLivros() { //Zera o carrinho devolendo os livros
         alugarLivro.clear();
         System.out.println("Livros devolvidos com sucesso!");
     }
 
 
-    public static Livro buscarLivro(String titulo) {
+    public static Livro buscarLivro(String titulo) { //Busca o livro dentro de GetTitulo.
         for (Livro livro : livros) {
             if (livro.getTitulo().equalsIgnoreCase(titulo)) {
                 return livro;
