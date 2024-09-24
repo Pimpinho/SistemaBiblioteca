@@ -69,6 +69,16 @@ public class Biblioteca {
         System.out.println("Carrinho adicionado com sucesso! O valor total do seu carrinho atual é de R$"+ valorFinal);
     }
 
+    public static void removerCarrinho() {
+        alugarLivro.clear();
+        System.out.println("Carrinho removido com sucesso!");
+    }
+
+    public static void devolverLivros() {
+        alugarLivro.clear();
+        System.out.println("Livros devolvidos com sucesso!");
+    }
+
 
     public static Livro buscarLivro(String titulo) {
         for (Livro livro : livros) {

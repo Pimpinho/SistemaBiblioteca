@@ -33,25 +33,28 @@ public class Main {
                     break;
                 case 2: // Alugar Livros:
 
+                    Livro livro = null;
                     if (usuario != null) { //Confere se o usuário foi informado
                         System.out.println("Digite o titulo do livro");
                         entrada.nextLine();
                         String tituloLivro = entrada.nextLine();
-                            Livro livro = Biblioteca.buscarLivro(tituloLivro);
+                        livro = Biblioteca.buscarLivro(tituloLivro);
 
 //                        System.out.println();
 
-                            if (livro != null) {
-                                usuario.alugarLivro(livro);
-                                biblioteca.adicionarCarrinho(livro);
-                            } else {
-                                System.out.println("Livro não encontrado");
-                            }
+                        if (livro != null) {
+                            usuario.alugarLivro(livro);
+                            biblioteca.adicionarCarrinho(livro);
+                        } else {
+                            System.out.println("Livro não encontrado");
                         }
+                    }
                     break;
 
                 case 3: // Devolver livro:
 
+                    Biblioteca.devolverLivros();
+                    break;
 
 
                 case 4: // Adicionar livro:
@@ -78,10 +81,14 @@ public class Main {
                     break;
 
                 case 5: //Remover Livro:
-                    entrada.nextLine();
-                    System.out.println("Informe o título do livro para ser removido");
-                    String tituloRemoverLivro = entrada.nextLine();
-                    biblioteca.removerLivro(tituloRemoverLivro);
+//                    entrada.nextLine();
+//                    System.out.println("Informe o título do livro para ser removido");
+//                    String tituloRemoverLivro = entrada.nextLine();
+                    Biblioteca.removerCarrinho();
+
+                    ;
+
+                    break;
 
                 case 6: // Meus livros alugados://
                     System.out.println(Biblioteca.getAlugarLivro());
@@ -91,7 +98,7 @@ public class Main {
 
                 case 7: // Sair:
                     System.out.println("Obrigado por usar nossos serviços");
-                        break;
+                    break;
                 default:
                     System.out.println("Opção inválida!");
             }
