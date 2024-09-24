@@ -1,5 +1,5 @@
 import java.util.Random; //Utilizado para gerar o ID do livro
-import java.util.Scanner;
+import java.util.Scanner; // Importar os Scanners
 
 public class Main {
 
